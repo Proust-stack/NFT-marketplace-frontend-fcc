@@ -11,7 +11,9 @@ export default function UpdateListingModal({
     isVisible,
     marketplaceAddress,
     onClose,
-    setChanged,
+    imageURI,
+    tokenName,
+    tokenDescription,
 }) {
     const dispatch = useNotification()
 
@@ -28,7 +30,6 @@ export default function UpdateListingModal({
             title: "Listing updated - please refresh (and move blocks)",
             position: "topR",
         })
-        setChanged((prev) => !prev)
         setPriceToUpdateListingWith("0")
     }
 
@@ -46,7 +47,11 @@ export default function UpdateListingModal({
     return (
         <Modal
             okText="Change"
-            title={`Changing price of NFT ${tokenId} from address ${truncateStr(nftAddress, 10)}`}
+            width="20vw"
+            title={`Changing price of NFT ${tokenId} from collection ${truncateStr(
+                nftAddress,
+                10
+            )}`}
             isVisible={isVisible}
             onCancel={onClose}
             onCloseButtonPressed={onClose}
